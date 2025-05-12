@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "LinkList.h"
+#include "Stack.h"
+
 
 int Fun(int *arr, int target, int start, int end)
 {
@@ -42,21 +44,41 @@ int Fun(int *arr, int target, int start, int end)
     // }
 }
 
-int main()
+void TestLinkList()
 {
     int arr[]={1,2,3,4,5,6};
     int a=6;
     BOOL d;
-    pLinkList list=CreateLinkList(arr, a);
-    PrintLinkList(list);
-    d=InsertLinkList(list,7,6);
-    PrintLinkList(list);
-    // int b=GetLinkList(list,3);
+    pLinkList list=LinkListCreate(arr, a);
+    LinkListPrint(list);
+    d=LinkListInsert(list,7,6);
+    LinkListPrint(list);
+    // int b=LinkListGet(list,3);
     printf("%d\n",d);
-    //BOOL c=RemoveLinkList(list,3);
+    //BOOL c=LinkListRemove(list,3);
     //printf("%d\n",c);
-    // PrintLinkList(list);
-    FreeLinkList(list);
+    // LinkListPrint(list);
+    LinkListFree(list);
+}
 
+void TestStack()
+{
+    int arr[]={1,2,3,4,5,6};
+    pStack stack=StackCreate();
+    for(int i=0;i<6;i++)
+    {
+        StackPush(stack,arr[i]);
+    }
+    StackPrint(stack);
+    printf("pre_len: %d\n",StackGetLen(stack));
+    printf("pop: %d\n", StackPop(stack));
+    printf("post_len: %d\n",StackGetLen(stack));
+    StackPrint(stack);
+}
+
+int main()
+{
+    // TestLinkList();
+    TestStack();
     return 0;
 }
