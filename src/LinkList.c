@@ -1,6 +1,6 @@
 #include "LinkList.h"
 
-int GetLinkList(pLinkList list, int index)
+int LinkListGet(pLinkList list, int index)
 {
     pLinkList ptr = list;
     int i = 0;
@@ -12,7 +12,7 @@ int GetLinkList(pLinkList list, int index)
     return ptr->value;
 }
 
-BOOL RemoveLinkList(pLinkList list, int index)
+BOOL LinkListRemove(pLinkList list, int index)
 {
     pLinkList ptr = list;
     int i = 0;
@@ -31,7 +31,7 @@ BOOL RemoveLinkList(pLinkList list, int index)
     return FALSE;
 }
 
-void PrintLinkList(pLinkList list)
+void LinkListPrint(pLinkList list)
 {
     pLinkList ptr = list;
     while (ptr != NULL)
@@ -42,7 +42,7 @@ void PrintLinkList(pLinkList list)
     printf("\n");
 }
 
-pLinkList CreateLinkList(int *arr, int len)
+pLinkList LinkListCreate(int *arr, int len)
 {
     // 头插法创建链表
     pLinkList head = (pLinkList)malloc(sizeof(LinkListNode));
@@ -73,7 +73,7 @@ pLinkList CreateLinkList(int *arr, int len)
     // return head;
 }
 
-void FreeLinkList(pLinkList list)
+void LinkListFree(pLinkList list)
 {
     pLinkList ptr=list;
     while(ptr!=NULL)
@@ -85,7 +85,7 @@ void FreeLinkList(pLinkList list)
     list = NULL;
 }
 
-BOOL InsertLinkList(pLinkList list, int value, int index)
+BOOL LinkListInsert(pLinkList list, int value, int index)
 {
     pLinkList ptr=list;
     int i=0;

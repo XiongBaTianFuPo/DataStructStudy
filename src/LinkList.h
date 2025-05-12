@@ -15,17 +15,17 @@ typedef struct LinkListNodeTag
     struct LinkListNodeTag *next;
 } LinkListNode, *pLinkList;
 
-int GetLinkList(pLinkList list, int index);
+int LinkListGet(pLinkList list, int index);
 
-BOOL RemoveLinkList(pLinkList list, int index);
+BOOL LinkListRemove(pLinkList list, int index);
 
-void PrintLinkList(pLinkList list);
+void LinkListPrint(pLinkList list);
 
-pLinkList CreateLinkList(int *arr, int len);
+pLinkList LinkListCreate(int *arr, int len);
 
-void FreeLinkList(pLinkList list);
+void LinkListFree(pLinkList list);
 
-BOOL InsertLinkList(pLinkList list, int value, int index);
+BOOL LinkListInsert(pLinkList list, int value, int index);
 
 
 
