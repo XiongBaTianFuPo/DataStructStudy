@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "LinkList.h"
+#include "Queue.h"
 #include "Stack.h"
 
 
@@ -74,11 +75,31 @@ void TestStack()
     printf("pop: %d\n", StackPop(stack));
     printf("post_len: %d\n",StackGetLen(stack));
     StackPrint(stack);
+    StackFree(stack);
+}
+
+void TestQueue()
+{
+    int arr[] = {1,2,3,4,5,6};
+    int len = sizeof(arr) / sizeof(int);
+    pQueue queue = QueueCreate();
+    for (int i = 0; i < len; ++i)
+    {
+        QueuePush(queue, arr[i]);
+    }
+    QueuePrint(queue);
+    int front = QueueFront(queue);
+    int pop = QueuePop(queue);
+    int now_len = QueueGetLen(queue);
+    printf("remove: %d == %d, queue length: %d\n", front, pop, now_len);
+    QueuePrint(queue);
+    QueueFree(queue);
 }
 
 int main()
 {
     // TestLinkList();
-    TestStack();
+    // TestStack();
+    TestQueue();
     return 0;
 }
