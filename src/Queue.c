@@ -28,6 +28,10 @@ void QueueFree(pQueue queue)
 
 void QueuePush(pQueue queue, int value)
 {
+    if(queue == NULL)
+    {
+        return;
+    }
     pLinkList newNode = (pLinkList)malloc(sizeof(LinkListNode));
     newNode->value = value;
     newNode->next = NULL;
