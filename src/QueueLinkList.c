@@ -1,9 +1,9 @@
-#include "Queue.h"
+#include "QueueLinkList.h"
 #include "LinkList.h"
 
-pQueue QueueCreate()
+pQueueLinkList QueueLinkListCreate()
 {
-    pQueue queue = (pQueue)malloc(sizeof(Queue));
+    pQueueLinkList queue = (pQueueLinkList)malloc(sizeof(QueueLinkList));
     pLinkList head = (pLinkList)malloc(sizeof(LinkListNode));
     head->value = 12345678;
     head->next = NULL;
@@ -13,7 +13,7 @@ pQueue QueueCreate()
     return queue;
 }
 
-void QueueFree(pQueue queue)
+void QueueLinkListFree(pQueueLinkList queue)
 {
     if(queue == NULL)
     {
@@ -26,7 +26,7 @@ void QueueFree(pQueue queue)
     queue = NULL;
 }
 
-void QueuePush(pQueue queue, int value)
+void QueueLinkListPush(pQueueLinkList queue, int value)
 {
     if(queue == NULL)
     {
@@ -40,11 +40,11 @@ void QueuePush(pQueue queue, int value)
     ++queue->len;
 }
 
-int QueuePop(pQueue queue)
+int QueueLinkListPop(pQueueLinkList queue)
 {
     if(queue==NULL || queue->len==0)
     {
-        return QUEUE_ERROR;
+        return QUEUE_LINKLIST_ERROR;
     }
     int value = queue->head->next->value;
     pLinkList ptr=queue->head->next;
@@ -54,25 +54,25 @@ int QueuePop(pQueue queue)
     return value;
 }
 
-int QueueGetLen(pQueue queue)
+int QueueLinkListGetLen(pQueueLinkList queue)
 {
     if(queue==NULL)
     {
-        return QUEUE_ERROR;
+        return QUEUE_LINKLIST_ERROR;
     }
     return queue->len;
 }
 
-int QueueFront(pQueue queue)
+int QueueLinkListFront(pQueueLinkList queue)
 {
     if(queue==NULL || queue->len==0)
     {
-        return QUEUE_ERROR;
+        return QUEUE_LINKLIST_ERROR;
     }
     return queue->head->next->value;
 }
 
-void QueuePrint(pQueue queue)
+void QueueLinkListPrint(pQueueLinkList queue)
 {
     if(queue==NULL || queue->len==0)
     {

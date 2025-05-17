@@ -2,12 +2,8 @@
 #define _XIONG_LINK_LIST_H
 #include <stdio.h>
 #include <stdlib.h>
+#include "Constant.h"
 
-#ifndef BOOL
-#define BOOL int
-#define TRUE 1
-#define FALSE 0
-#endif
 
 typedef struct LinkListNodeTag
 {

@@ -1,8 +1,7 @@
 #ifndef _XIONG_STACK_H
 #define _XIONG_STACK_H
 #include "LinkList.h"
-
-#define STACK_ERROR (-2141242142)
+#include "Constant.h"
 
 typedef struct StackTag
 {

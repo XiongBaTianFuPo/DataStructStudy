@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "LinkList.h"
-#include "Queue.h"
+#include "QueueLinkList.h"
+#include "QueueArr.h"
 #include "Stack.h"
 
 
@@ -78,28 +79,53 @@ void TestStack()
     StackFree(stack);
 }
 
-void TestQueue()
+void TestQueueLinkList()
 {
     int arr[] = {1,2,3,4,5,6};
     int len = sizeof(arr) / sizeof(int);
-    pQueue queue = QueueCreate();
+    pQueueLinkList queue = QueueLinkListCreate();
     for (int i = 0; i < len; ++i)
     {
-        QueuePush(queue, arr[i]);
+        QueueLinkListPush(queue, arr[i]);
     }
-    QueuePrint(queue);
-    int front = QueueFront(queue);
-    int pop = QueuePop(queue);
-    int now_len = QueueGetLen(queue);
+    QueueLinkListPrint(queue);
+    int front = QueueLinkListFront(queue);
+    int pop = QueueLinkListPop(queue);
+    int now_len = QueueLinkListGetLen(queue);
     printf("remove: %d == %d, queue length: %d\n", front, pop, now_len);
-    QueuePrint(queue);
-    QueueFree(queue);
+    QueueLinkListPrint(queue);
+    QueueLinkListFree(queue);
+}
+
+void TestQueueArr()
+{
+    int arr[] = {1,2,3,4,5,6};
+    int len = sizeof(arr) / sizeof(int);
+    pQueueArr queue = QueueArrCreate();
+    for (int i = 0; i < len; ++i)
+    {
+        QueueArrPush(queue, arr[i]);
+    }
+    QueueArrPrint(queue);
+    int front = QueueArrFront(queue);
+    int pop = QueueArrPop(queue);
+    int now_len = QueueArrGetLen(queue);
+    printf("remove: %d == %d, queue length: %d\n", front, pop, now_len);
+    QueueArrPrint(queue);
+    for (int i = 0; i < 3; ++i)
+    {
+        QueueArrPop(queue);
+        QueueArrPush(queue, i);
+    }
+    QueueArrPrint(queue);
+    QueueArrFree(queue);
 }
 
 int main()
 {
     // TestLinkList();
     // TestStack();
-    TestQueue();
+    // TestQueueLinkList();
+    TestQueueArr();
     return 0;
 }

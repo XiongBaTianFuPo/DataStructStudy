@@ -1,7 +1,6 @@
 #ifndef _XIONG_STACK_BY_ARR
 #define _XIONG_STACK_BY_ARR
-#define MAX_STACK_SIZE 204800
-#define STACK_ERROR (-2141242142)
+#include "Constant.h"
 
 typedef struct ArrStackTag
 {
