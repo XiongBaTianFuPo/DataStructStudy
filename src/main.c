@@ -3,48 +3,8 @@
 #include "QueueLinkList.h"
 #include "QueueArr.h"
 #include "Stack.h"
+#include "BiTree.h"
 
-
-int Fun(int *arr, int target, int start, int end)
-{
-    while (start <= end)
-    {
-        int mid = (start + end) / 2;
-        if (arr[mid] == target)
-        {
-            return mid;
-        }
-        else if (arr[mid] > target)
-        {
-            end = mid - 1;
-        }
-        else
-        {
-            start = mid + 1;
-        }
-    }
-    return -1;
-    // if(start>end)
-    // {
-    //     return -1;
-    // }
-    // int mid = (start + end) / 2;
-
-    // if(arr[mid]==target)
-    // {
-    //     return mid;
-    // }
-
-    // if(arr[mid]>target)
-    // {
-    //     return Fun(arr,target,start,mid-1);
-    // }
-
-    // if (arr[mid] < target)
-    // {
-    //     return Fun(arr,target,mid+1,end);
-    // }
-}
 
 void TestLinkList()
 {
@@ -97,28 +57,48 @@ void TestQueueLinkList()
     QueueLinkListFree(queue);
 }
 
-void TestQueueArr()
+// void TestQueueArr()
+// {
+//     int arr[] = {1,2,3,4,5,6};
+//     int len = sizeof(arr) / sizeof(int);
+//     pQueueArr queue = QueueArrCreate();
+//     for (int i = 0; i < len; ++i)
+//     {
+//         QueueArrPush(queue, arr[i]);
+//     }
+//     QueueArrPrint(queue);
+//     int front = QueueArrFront(queue);
+//     int pop = QueueArrPop(queue);
+//     int now_len = QueueArrGetLen(queue);
+//     printf("remove: %d == %d, queue length: %d\n", front, pop, now_len);
+//     QueueArrPrint(queue);
+//     for (int i = 0; i < 3; ++i)
+//     {
+//         QueueArrPop(queue);
+//         QueueArrPush(queue, i);
+//     }
+//     QueueArrPrint(queue);
+//     QueueArrFree(queue);
+// }
+
+void VisitBiNode(pBiTree bitree)
 {
-    int arr[] = {1,2,3,4,5,6};
-    int len = sizeof(arr) / sizeof(int);
-    pQueueArr queue = QueueArrCreate();
-    for (int i = 0; i < len; ++i)
+    if (bitree == NULL)
     {
-        QueueArrPush(queue, arr[i]);
+        return;
     }
-    QueueArrPrint(queue);
-    int front = QueueArrFront(queue);
-    int pop = QueueArrPop(queue);
-    int now_len = QueueArrGetLen(queue);
-    printf("remove: %d == %d, queue length: %d\n", front, pop, now_len);
-    QueueArrPrint(queue);
-    for (int i = 0; i < 3; ++i)
-    {
-        QueueArrPop(queue);
-        QueueArrPush(queue, i);
-    }
-    QueueArrPrint(queue);
-    QueueArrFree(queue);
+    printf("%d ", bitree->value);
+}
+
+void TestBiTree()
+{
+    int preArr[] = {1, 2, 4, 5, 3, 6};
+    int midArr[] = {4, 2, 5, 1, 3, 6};
+    pBiTree bitree = BiTreeCreateByPreAndMid(preArr, 0, 5, midArr, 0, 5);
+    BiTreePreVisit(bitree, VisitBiNode);
+    BiTreeMidVisit(bitree, VisitBiNode);
+    BiTreePostVisit(bitree, VisitBiNode);
+    BiTreeLevelVisit(bitree, VisitBiNode);
 }
 
 int main()
@@ -126,6 +106,7 @@ int main()
     // TestLinkList();
     // TestStack();
     // TestQueueLinkList();
-    TestQueueArr();
+    // TestQueueArr();
+    TestBiTree();
     return 0;
 }

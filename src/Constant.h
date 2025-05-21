@@ -7,8 +7,8 @@
 #define FALSE 0
 #endif
 
-#define MAX_STACK_SIZE 204800
-#define MAX_QUEUE_SIZE 6
+#define MAX_STACK_SIZE 2048
+#define MAX_QUEUE_SIZE 512
 
 #define STACK_ERROR             (-0x1000000)
 #define QUEUE_ARR_ERROR         (-0x1000001)

@@ -1,5 +1,6 @@
 #ifndef _XIONG_QUEUEARR_H
 #define _XIONG_QUEUEARR_H
+#include "BiTree.h"
 #include "Constant.h"
 
 typedef struct QueueArrTag
@@ -7,20 +8,20 @@ typedef struct QueueArrTag
     int front;
     int rear;
     int len;
-    int arr[MAX_QUEUE_SIZE];
+    pBiTree arr[MAX_QUEUE_SIZE];
 } QueueArr, *pQueueArr;
 
 pQueueArr QueueArrCreate();
 
 void QueueArrFree(pQueueArr queue);
 
-int QueueArrPush(pQueueArr queue, int value);
+int QueueArrPush(pQueueArr queue, pBiTree value);
 
-int QueueArrPop(pQueueArr queue);
+pBiTree QueueArrPop(pQueueArr queue);
 
 int QueueArrGetLen(pQueueArr queue);
 
-int QueueArrFront(pQueueArr queue);
+pBiTree QueueArrFront(pQueueArr queue);
 
 void QueueArrPrint(pQueueArr queue);
 

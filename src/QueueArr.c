@@ -20,7 +20,7 @@ void QueueArrFree(pQueueArr queue)
     queue=NULL;
 }
 
-int QueueArrPush(pQueueArr queue, int value)
+int QueueArrPush(pQueueArr queue, pBiTree value)
 {
     if(queue==NULL || queue->len>=MAX_QUEUE_SIZE)
     {
@@ -32,13 +32,13 @@ int QueueArrPush(pQueueArr queue, int value)
     return 0;
 }
 
-int QueueArrPop(pQueueArr queue)
+pBiTree QueueArrPop(pQueueArr queue)
 {
     if(queue==NULL || queue->len==0)
     {
-        return QUEUE_ARR_ERROR;
+        return NULL;
     } 
-    int value = queue->arr[queue->front];
+    pBiTree value = queue->arr[queue->front];
     --queue->len;
     queue->front = (queue->front + 1) % MAX_QUEUE_SIZE;
     return value;
@@ -53,11 +53,11 @@ int QueueArrGetLen(pQueueArr queue)
     return queue->len;
 }
 
-int QueueArrFront(pQueueArr queue)
+pBiTree QueueArrFront(pQueueArr queue)
 {
     if(queue==NULL|| queue->len==0)
     {
-        return QUEUE_ARR_ERROR;
+        return NULL;
     } 
     return queue->arr[queue->front];
 }
@@ -71,7 +71,7 @@ void QueueArrPrint(pQueueArr queue)
     int idx=queue->front;
     for(int i=0;i<queue->len;i++)
     {
-        printf("%d ",queue->arr[idx]);
+        printf("%d ",queue->arr[idx]->value);
         idx = (idx + 1) % MAX_QUEUE_SIZE;
     }
     printf("\n");
