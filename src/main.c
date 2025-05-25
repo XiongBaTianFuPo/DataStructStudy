@@ -90,15 +90,37 @@ void VisitBiNode(pBiTree bitree)
     printf("%d ", bitree->value);
 }
 
+pBiTree pre = NULL;
+pBiTree now = NULL;
+pBiTree final = NULL;
+int bitreeValue = 6;
+void VisitMidPre(pBiTree bitree)
+{
+    pre = now;
+    now = bitree;
+    if (now->value == bitreeValue)
+    {
+        final = pre;
+    }
+}
+
 void TestBiTree()
 {
-    int preArr[] = {1, 2, 4, 5, 3, 6};
-    int midArr[] = {4, 2, 5, 1, 3, 6};
-    pBiTree bitree = BiTreeCreateByPreAndMid(preArr, 0, 5, midArr, 0, 5);
-    BiTreePreVisit(bitree, VisitBiNode);
-    BiTreeMidVisit(bitree, VisitBiNode);
-    BiTreePostVisit(bitree, VisitBiNode);
-    BiTreeLevelVisit(bitree, VisitBiNode);
+    int preArr[] = {1, 2, 4, 5, 3, 6,7};
+    int midArr[] = {4, 2, 5, 1, 6, 3,7};
+    int arrLen = sizeof(preArr) / sizeof(int);
+    pBiTree bitree = BiTreeCreateByPreAndMid(preArr, 0, arrLen - 1, midArr, 0, arrLen - 1);
+    BiTreeMidVisit(bitree, VisitMidPre);
+    printf("final=%d\n", final->value);
+
+    // BiTreePreVisit(bitree, VisitBiNode);
+    // printf("\n");
+    // BiTreeMidVisit(bitree, VisitBiNode);
+    // printf("\n");
+    // BiTreePostVisit(bitree, VisitBiNode);
+    // printf("\n");
+    // BiTreeLevelVisit(bitree, VisitBiNode);
+    // printf("\n");
 }
 
 int main()

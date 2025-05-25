@@ -116,11 +116,11 @@ pBiTree BiTreeCreateByPreAndMid(int *preArr, int preStart, int preEnd, int *midA
     root->value = preArr[preStart];
     int index = SequentialSearch(midArr, root->value, midStart, midEnd);
     int lPreStart = preStart+1;
-    int lPreEnd = index;
+    int lPreEnd = preStart + (index-midStart);
     int lMidStart = midStart;
     int lMidEnd = index-1;
     root->left = BiTreeCreateByPreAndMid(preArr,lPreStart,lPreEnd,midArr,lMidStart,lMidEnd);
-    int rPreStart = index+1;
+    int rPreStart = lPreEnd+1;
     int rPreEnd = preEnd;
     int rMidStart = index+1;
     int rMidEnd = midEnd;
